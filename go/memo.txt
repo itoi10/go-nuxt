@@ -1,0 +1,33 @@
+# Echo
+EchoはGoの軽量フレームワークとして有名
+REST原則に沿ったAPI設計。Ginを超える高速処理
+
+Go言語フレームワークのまとめ【2021年版】
+https://freelance-start.com/articles/73
+
+
+# 依存管理ツール
+書籍ではdepを使っているがgolang1.13からデフォルトで組み込まれているGo modulesを使う
+
+Go言語の依存モジュール管理ツール Modules の使い方
+https://qiita.com/uchiko/items/64fb3020dd64cf211d4e
+
+
+# ホットリロード環境
+書籍ではrealizeを使っているが開発が止まっているのでAirを使う
+
+【Golang/Go言語】Airでホットリロードをする方法
+https://awesome-linus.com/2020/09/13/go-air-hot-reload/
+
+
+# fasthttp
+go言語でHTTP通信を行うためのライブラリ
+
+net/httpとfasthttpの対応表
+https://qiita.com/satto_sann/items/576fb45981d17ae56f9f
+
+
+# go.modをルートにしてVSCodeを開く
+
+Go + VSCode でサブディレクトリに go.mod を置くと `could not import ... (no package for import ...)` になる
+https://daido.hatenablog.jp/entry/2020/09/17/154228
