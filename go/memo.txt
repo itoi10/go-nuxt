@@ -31,3 +31,12 @@ https://qiita.com/satto_sann/items/576fb45981d17ae56f9f
 
 Go + VSCode でサブディレクトリに go.mod を置くと `could not import ... (no package for import ...)` になる
 https://daido.hatenablog.jp/entry/2020/09/17/154228
+
+
+# logrus
+【Go×ログ】logrusの使い方を簡単に分かりやすくまとめてみた
+https://qiita.com/gold-kou/items/3143ab4622acacd33f8d
+
+# godotenv
+【Go】.envファイルをGolangでも使用するためのライブラリ「godotenv」
+https://qiita.com/sola-msr/items/fb7d6889d7bd7a6705d0

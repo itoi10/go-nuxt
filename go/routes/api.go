@@ -14,6 +14,7 @@ func Init(e *echo.Echo) {
 	g := e.Group("/api")
 	{
 		// /api/popularにアクセスすることでこの関数が返すJSONを表示できる
+		// curl -XGET http://localhost:8080/api/popular
 		g.GET("/popular", api.FetchMostPopularVideos())
 	}
 }

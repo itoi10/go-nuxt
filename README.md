@@ -2,20 +2,41 @@
 
 ## 起動
 
+.env ファイルに YouTubeAPI 設定
+
+```
+API_KEY=<YouTube API key>
+```
+
 サーバ起動
 
 ```golang
 go run server.go
 ```
 
-アクセス
+エンドポイントにアクセス
 
-http://localhost:8080/api/popular
-
-JSON が返される
+CURL コマンド
 
 ```
-"Hello World!"
+curl -XGET http://localhost:8080/api/popular
+```
+
+またはブラウザで開く
+
+```
+http://localhost:8080/api/popular
+```
+
+YouTube API から取得した結果が返される
+
+```json
+{
+  "etag": "12345...",
+  "items": [
+    {
+      ...
+
 ```
 
 ## 参考
