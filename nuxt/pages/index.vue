@@ -1,9 +1,21 @@
 <template>
-  <Tutorial/>
+  <sectoin class="section">
+    <div class="container">
+
+    </div>
+  </sectoin>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import ROUTES from '..//routes/api'
 
-export default Vue.extend({})
+export default {
+  async fetch({store}: any) {
+    const payload = {
+      uri: ROUTES.GET.POPULARS
+    }
+    // Vuexストアのアクションに処理をdispatch
+    await store.dispatch('fetchPopularVideos', payload)
+  }
+}
 </script>

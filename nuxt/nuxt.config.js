@@ -37,7 +37,16 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios'
   ],
+
+  // APIサーバのエンドポイントをデフォルトのリクエスト先とする
+  axios: {
+    baseURL: 'http://localhost:8080/'
+  },
+  proxy: {
+    '/api': '/'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

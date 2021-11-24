@@ -1,0 +1,31 @@
+# yarn create nuxt-app
+
+【Nuxt.js】create-nuxt-appのすすめ 〜create-nuxt-appの質問に負けたくないあなたへ〜
+https://qiita.com/cheez921/items/fdfd224099f686e3173d
+
+
+# 起動方法
+$ yarn dev
+
+
+# Vuexのデータフロー
+VuexとはVueが用意している状態管理ライブラリ
+Q:ReactでいうReduxのようなもの？
+
+Nuxt.jsで理解するVuexのあんなことやこんなこと
+https://papadays.com/post/10a84cfvx3tm8ln0gktsii/
+
+
+# 変数名の$ドルマーク
+
+Nuxtで「this.$axios」などで「$」がつく理由はどうしてでしょうか？
+https://jp.quora.com/Nuxt%E3%81%A7-this-axios-%E3%81%AA%E3%81%A9%E3%81%A7-%E3%81%8C%E3%81%A4%E3%81%8F%E7%90%86%E7%94%B1%E3%81%AF%E3%81%A9%E3%81%86%E3%81%97%E3%81%A6%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B-%E3%81%BE%E3%81%9F
+
+
+# axiosセットアップ
+$ yarn add @nuxtjs/axios
+
+nuxt.config.jsに追加
+  modules: [
+    '@nuxtjs/axios'
+  ],
