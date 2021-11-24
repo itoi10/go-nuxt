@@ -29,3 +29,13 @@ nuxt.config.jsに追加
   modules: [
     '@nuxtjs/axios'
   ],
+
+# layouts/default.vue
+Nuxtではlayoutsディレクトリは以下に設置したファイルを画面レイアウトとして利用できる
+
+
+# <style scoped>
+scoped属性をもつ <style> タグを利用するとき、その CSS は現在のコンポーネントの要素にのみ適用されます。
+
+スコープ付き CSS
+https://vue-loader-v14.vuejs.org/ja/features/scoped-css.html
