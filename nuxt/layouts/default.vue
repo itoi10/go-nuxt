@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <!-- <TheHeader /> -->
+    <TheHeader />
 
     <div class="column">
-      <!-- <TheSidebar /> -->
+      <TheSidebar />
 
       <div class="column content">
         <nuxt />

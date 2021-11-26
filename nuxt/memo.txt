@@ -39,3 +39,10 @@ scoped属性をもつ <style> タグを利用するとき、その CSS は現在
 
 スコープ付き CSS
 https://vue-loader-v14.vuejs.org/ja/features/scoped-css.html
+
+
+# スタイルガイド
+https://jp.vuejs.org/v2/style-guide/index.html
+
+単一インスタンスのコンポーネント名 (強く推奨)
+常に 1 つのアクティブなインスタンスしか持たないコンポーネントは、1 つしか存在しえないことを示すために The というプレフィックスで始めるべきです。
