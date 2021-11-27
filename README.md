@@ -26,7 +26,13 @@ curl -XGET http://localhost:8080/api/popular
 
 ```
 curl -XGET http://localhost:8080/api/video/<任意の動画ID>
-curl -XGET http://localhost:8080/api/video/jNQXAC9IVRw&t=17s
+curl -XGET http://localhost:8080/api/video/jNQXAC9IVRw
+```
+
+関連動画取得
+
+```
+curl -XGET http://localhost:8080/api/related/jNQXAC9IVRw
 ```
 
 ## 参考

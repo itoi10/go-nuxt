@@ -18,7 +18,11 @@ func Init(e *echo.Echo) {
 		g.GET("/popular", api.FetchMostPopularVideos())
 
 		// 動画情報取得                                 動画ID
-		// curl -XGET http://localhost:8080/api/video/jNQXAC9IVRw&t=17s
+		// curl -XGET http://localhost:8080/api/video/jNQXAC9IVRw
 		g.GET("/video/:id", api.GetVideo())
+
+		// 関連動画取得
+		// curl -XGET http://localhost:8080/api/related/jNQXAC9IVRw
+		g.GET("/related/:id", api.FetchRelatedVideos())
 	}
 }

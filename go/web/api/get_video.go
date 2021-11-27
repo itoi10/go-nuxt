@@ -1,7 +1,6 @@
 /*
 	動画情報取得
 */
-
 package api
 
 import (
