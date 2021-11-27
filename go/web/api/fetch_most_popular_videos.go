@@ -4,28 +4,17 @@
 package api
 
 import (
-	"context"
-	"os"
-
 	"github.com/labstack/echo"
 	"github.com/sirupsen/logrus"
 	"github.com/valyala/fasthttp"
-	"google.golang.org/api/option"
 	"google.golang.org/api/youtube/v3"
 )
 
 // YouTube APIを使って人気動画を取得する処理
 func FetchMostPopularVideos() echo.HandlerFunc {
 	return func(c echo.Context) error {
-		// YouTubeのAPIキー
-		key := os.Getenv("API_KEY")
-
-		// APIを実行するためのサービスを生成
-		ctx := context.Background()
-		yts, err := youtube.NewService(ctx, option.WithAPIKey(key))
-		if err != nil {
-			logrus.Fatalf("Error creating new Youtube server: %v", err)
-		}
+		// middlewaresのyoutube.Serviceを使う
+		yts := c.Get("yts").(*youtube.Service)
 
 		// API実行条件設定
 		// https://developers.google.com/youtube/v3/docs/videos/list?hl=ja

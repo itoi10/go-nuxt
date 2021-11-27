@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/itoi10/go-nuxt/middlewares"
 	"github.com/itoi10/go-nuxt/routes"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo"
@@ -29,6 +30,8 @@ func main() {
 	e.Use(middleware.Logger())
 	// フロントエンドとドメインが異なるのでアクセスできるようにCORS設定
 	e.Use(middleware.CORS())
+	// *youtube.Serviceの生成
+	e.Use(middlewares.YouTubeService())
 
 	// ルートを設定
 	routes.Init(e)

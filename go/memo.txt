@@ -45,3 +45,8 @@ https://qiita.com/sola-msr/items/fb7d6889d7bd7a6705d0
 # pageToken
 maxResults を超える結果がある場合は、nextPageToken が返却されるので、次の検索をする際に、pageToken として nextPageToken を渡してあげれば、次のデータを取得できます。
 https://zenn.dev/jqinglong/articles/1161615fdaa6f6
+
+
+# middleware
+How to write a custom middleware?
+https://echo.labstack.com/cookbook/middleware/
