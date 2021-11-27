@@ -14,29 +14,19 @@ API_KEY=<YouTube API key>
 go run server.go
 ```
 
-エンドポイントにアクセス
+エンドポイントにアクセスすると YouTube API から取得した結果が返される
 
-CURL コマンド
+人気動画リスト
 
 ```
 curl -XGET http://localhost:8080/api/popular
 ```
 
-またはブラウザで開く
+任意の動画情報
 
 ```
-http://localhost:8080/api/popular
-```
-
-YouTube API から取得した結果が返される
-
-```json
-{
-  "etag": "12345...",
-  "items": [
-    {
-      ...
-
+curl -XGET http://localhost:8080/api/video/<任意の動画ID>
+curl -XGET http://localhost:8080/api/video/jNQXAC9IVRw&t=17s
 ```
 
 ## 参考

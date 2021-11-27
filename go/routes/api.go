@@ -16,5 +16,9 @@ func Init(e *echo.Echo) {
 		// /api/popularにアクセスすることでこの関数が返すJSONを表示できる
 		// curl -XGET http://localhost:8080/api/popular
 		g.GET("/popular", api.FetchMostPopularVideos())
+
+		// 動画情報取得                                 動画ID
+		// curl -XGET http://localhost:8080/api/video/jNQXAC9IVRw&t=17s
+		g.GET("/video/:id", api.GetVideo())
 	}
 }
