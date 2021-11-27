@@ -24,5 +24,9 @@ func Init(e *echo.Echo) {
 		// 関連動画取得
 		// curl -XGET http://localhost:8080/api/related/jNQXAC9IVRw
 		g.GET("/related/:id", api.FetchRelatedVideos())
+
+		// 動画検索
+		// curl -XGET 'http://localhost:8080/api/search?q=searchword'
+		g.GET("/search", api.SearchVideos())
 	}
 }
