@@ -5,6 +5,8 @@ export const ROUTES = {
     POPULARS: '/api/popular',
     // 動画情報取得
     VIDEO: '/api/video/:id',
+    // 関連動画取得
+    RELATED: '/api/related/:id',
   }
 };
 
