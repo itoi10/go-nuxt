@@ -1,8 +1,10 @@
 
 export const ROUTES = {
-  // トップページが表示された時にストアのアクションを呼び出す処理
   GET: {
-    POPULARS: '/api/popular'
+    // トップページが表示された時にストアのアクションを呼び出す処理
+    POPULARS: '/api/popular',
+    // 動画情報取得
+    VIDEO: '/api/video/:id',
   }
 };
 

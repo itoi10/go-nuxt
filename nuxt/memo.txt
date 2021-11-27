@@ -46,3 +46,14 @@ https://jp.vuejs.org/v2/style-guide/index.html
 
 単一インスタンスのコンポーネント名 (強く推奨)
 常に 1 つのアクティブなインスタンスしか持たないコンポーネントは、1 つしか存在しえないことを示すために The というプレフィックスで始めるべきです。
+
+
+# vue-youtube
+[vue-youtube] YouTubeIFramePlayerAPIのVue用ラッパーを使ってみる。
+https://zenn.dev/reerishun/articles/d53dd533eed17f63e174
+
+# プラグイン
+https://develop365.gitlab.io/nuxtjs-2.8.X-doc/ja/guide/plugins/
+
+plugins/にファイルを作成
+nuxt.config.js の plugins キー内にファイルパスを追加
