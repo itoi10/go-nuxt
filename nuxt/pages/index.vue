@@ -9,6 +9,18 @@
           />
         </div>
       </div>
+
+      <div class="block">
+        <nav class="pagination">
+          <a
+            href.prevent="#"
+            class="pagination-next"
+            @click="loadMore"
+          >
+            More
+          </a>
+        </nav>
+      </div>
     </div>
   </sectoin>
 </template>
@@ -26,8 +38,27 @@ export default {
     // getterを使ってストアから動画一覧取得
     items() {
       const videos = this.$store.getters.getPopularVideos
-      console.log(videos)
+      console.log('computed[item]: ' + videos)
       return videos
+    },
+    // ストアからnextPageToken取得
+    nextPageToken() {
+      const token = this.$store.getters.getMeta.nextPageToken
+      console.log('computed[nextPageToken]' + token)
+      return token
+    },
+  },
+
+  methods: {
+    loadMore() {
+      const payload = {
+        uri: ROUTES.GET.POPULARS,
+        params: {
+          pageToken: this.nextPageToken
+        }
+      }
+      // actionを実行してgoサーバからデータ取得
+      this.$store.dispatch('fetchPopularVideos', payload)
     }
   },
 

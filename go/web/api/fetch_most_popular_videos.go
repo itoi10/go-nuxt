@@ -31,6 +31,12 @@ func FetchMostPopularVideos() echo.HandlerFunc {
 		// https://developers.google.com/youtube/v3/docs/videos/list?hl=ja
 		call := yts.Videos.List([]string{"id", "snippet"}).Chart("mostPopular").MaxResults(3)
 
+		// リクエストのパラメータにpageTokenが設定されている場合はYouTube APIコール時にpageToken使用
+		pageToken := c.QueryParam("pageToken")
+		if len(pageToken) > 0 {
+			call = call.PageToken(pageToken)
+		}
+
 		// API実行
 		res, err := call.Do()
 		if err != nil {
