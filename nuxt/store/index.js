@@ -1,5 +1,6 @@
 // ストアを定義
 
+import firebase from "~/plugins/firebase";
 import { createRequestClient } from "./request-client";
 
 export const state = () => ({
@@ -13,6 +14,8 @@ export const state = () => ({
   // 検索動画リスト
   searchItems: [],
   searchMeta: {},
+  // アカウント登録用
+  token: '',
 })
 
 export const actions = {
@@ -56,7 +59,26 @@ export const actions = {
     const client = createRequestClient(this.$axios)
     const res = await client.get(payload.uri, payload.params)
     commit('mutateSearchVideos', res)
-  }
+  },
+
+  // サインアップ
+  async signUp({commit, dispatch}, payload) {
+    await firebase.auth().createUserWithEmailAndPassword(
+      payload.email, payload.password
+    )
+    const res = await firebase.auth().signInWithEmailAndPassword(
+      payload.email,
+      payload.password
+    )
+    const token = await res.user.getIdToken()
+    this.$cookies.set('jwt_token', token)
+    commit('mutateToken', token)
+    this.app.router.push('/')
+  },
+
+  async setToken({commit}, payload) {
+    commit('mutateToken', payload)
+  },
 }
 
 // stateの値を変更する
@@ -84,6 +106,10 @@ export const mutations = {
     state.searchItems = payload.items ? state.searchItems.concat(payload.items) : []
     state.searchMeta = payload
   },
+
+  mutateToken(state, payload) {
+    state.token = payload
+  }
 }
 
 // Vueコンポーネントからステートを参照するためのgetter
