@@ -84,6 +84,22 @@ export const actions = {
   async setToken({commit}, payload) {
     commit('mutateToken', payload)
   },
+
+  // ログイン
+  async login({commit, dispatch}, payload) {
+    // ログイン実行
+    const res = await firebase.auth().signInWithEmailAndPassword(
+      payload.email,
+      payload.password
+    )
+    // トークンをCookieとstateに保存
+    const token = await res.user.getIdToken()
+    console.log('login action: ' + token)
+    this.$cookies.set('jwt_token', token)
+    commit('mutateToken', token)
+    // トップページに遷移
+    this.app.router.push('/')
+  }
 }
 
 // stateの値を変更する
@@ -138,4 +154,8 @@ export const getters = {
   getSearchMeta(state) {
     return state.searchMeta
   },
+  // ログイン状態か？
+  isLoggedIn(state) {
+    return !!state.token
+  }
 }

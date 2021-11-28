@@ -65,3 +65,10 @@ https://zenn.dev/captain_blue/articles/nuxt-cookie-memo
 1.cookie-universal-nuxtをインストールする
 2.nuxt.config.jsに設定を追加する
 3.コンポーネントで使う
+
+
+# 【JavaScript】!!（ビックリマーク2つ）って何？
+https://senews.jp/bikkuri-2/
+
+一旦否定演算子（!）でaaaを逆の真偽値としてboolean型に変換し、もう一度（!）を使って元の真偽値（boolean型）に戻します。
+これによって、未定義の変数もif文の条件式の中でboolean型になるため、正しく判定ができます。
