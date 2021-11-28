@@ -99,6 +99,17 @@ export const actions = {
     commit('mutateToken', token)
     // トップページに遷移
     this.app.router.push('/')
+  },
+
+  // ログアウト
+  async logout({commit}) {
+    // ログアウト実行
+    await firebase.auth().signOut()
+    // Cookieとstateからトークンをクリア
+    commit('mutateToken', null)
+    this.$cookies.remove('jwt_token')
+    // トップページに遷移
+    this.app.router.push('/')
   }
 }
 

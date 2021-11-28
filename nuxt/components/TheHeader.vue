@@ -26,6 +26,38 @@
           </div>
         </div>
       </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+
+          <div v-if="isLoggedIn" class="buttons">
+            <a
+              href="#"
+              class="button is-light"
+              @click.prevent="logout"
+            >
+              Log out
+            </a>
+          </div>
+          <div v-else class="buttons">
+            <nuxt-link
+              class="button is-primary"
+              to="/signup"
+            >
+              <strong>Signup</strong>
+            </nuxt-link>
+            <nuxt-link
+              class="button is-light"
+              to="/login"
+            >
+              <strong>Log in</strong>
+            </nuxt-link>
+          </div>
+
+
+        </div>
+      </div>
+
     </div>
   </nav>
 </template>
@@ -33,4 +65,17 @@
 <script>
 // nuxt-linkはページ遷移に使用する。
 // Vueのrouter-linkを拡張したもので同じように使うことができる。
+
+  export default {
+    computed: {
+      isLoggedIn() {
+        return !!this.$store.getters.isLoggedIn
+      }
+    },
+    methods: {
+      logout() {
+        this.$store.dispatch('logout')
+      }
+    }
+  }
 </script>
