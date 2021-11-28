@@ -7,6 +7,8 @@ export const ROUTES = {
     VIDEO: '/api/video/:id',
     // 関連動画取得
     RELATED: '/api/related/:id',
+    // 検索
+    SEARCH: '/api/search',
   }
 };
 

@@ -1,5 +1,8 @@
 /*
 	関連動画取得
+
+	YouTube API 実行コスト (1日上限 10000)
+	search list	100
 */
 package api
 

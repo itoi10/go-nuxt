@@ -11,6 +11,7 @@ export class RequestClient {
     // 引数のparamsからクエリ文字列を生成
     const queryString = Object.keys(params).map(key => key + '=' + params[key]).join('&')
     const query = queryString.length > 0 ? `${uri}?${queryString}` : uri
+    console.log("query: " + query)
     return await this.axios.$get(query)
   }
 }

@@ -1,5 +1,8 @@
 /*
 	動画情報取得
+
+	YouTube API 実行コスト (1日上限 10000)
+	videos list	1
 */
 package api
 

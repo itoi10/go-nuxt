@@ -50,3 +50,14 @@ https://zenn.dev/jqinglong/articles/1161615fdaa6f6
 # middleware
 How to write a custom middleware?
 https://echo.labstack.com/cookbook/middleware/
+
+
+# YouTube API 割り当て
+YouTube APIのメソッド毎にコストが決められていて呼び出すたびにコストがかかる。
+1日の割り当ては10000で上限を超えると403エラーになる。
+
+search list	100
+videos list	1
+
+YouTube Data API (v3) - Quota Calculator
+https://developers.google.com/youtube/v3/determine_quota_cost?hl=ja
