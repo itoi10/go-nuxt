@@ -57,3 +57,11 @@ https://develop365.gitlab.io/nuxtjs-2.8.X-doc/ja/guide/plugins/
 
 plugins/にファイルを作成
 nuxt.config.js の plugins キー内にファイルパスを追加
+
+
+# Nuxt.jsでCookieを使う
+https://zenn.dev/captain_blue/articles/nuxt-cookie-memo
+
+1.cookie-universal-nuxtをインストールする
+2.nuxt.config.jsに設定を追加する
+3.コンポーネントで使う

@@ -1,6 +1,6 @@
 // ストアを定義
 
-import firebase from "~/plugins/firebase";
+import firebase from "../plugins/firebase";
 import { createRequestClient } from "./request-client";
 
 export const state = () => ({
@@ -63,16 +63,21 @@ export const actions = {
 
   // サインアップ
   async signUp({commit, dispatch}, payload) {
+    // メールアドレスとパスワードを引数にして、アカウント作成
     await firebase.auth().createUserWithEmailAndPassword(
       payload.email, payload.password
     )
+    // ログイン
     const res = await firebase.auth().signInWithEmailAndPassword(
       payload.email,
       payload.password
     )
+    // サーバサイドでユーザ認証にJWTを使用するためトークン取得
     const token = await res.user.getIdToken()
+    // トークンをCookieとstateに保存
     this.$cookies.set('jwt_token', token)
     commit('mutateToken', token)
+    // トップページに遷移
     this.app.router.push('/')
   },
 
@@ -109,6 +114,7 @@ export const mutations = {
 
   mutateToken(state, payload) {
     state.token = payload
+    console.log('state.token: ' + state.token)
   }
 }
 
