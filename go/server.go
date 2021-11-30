@@ -32,6 +32,10 @@ func main() {
 	e.Use(middleware.CORS())
 	// *youtube.Serviceの生成
 	e.Use(middlewares.YouTubeService())
+	// DB用
+	e.Use(middlewares.DatabaseService())
+	// 認証用
+	e.Use(middlewares.Firebase())
 
 	// ルートを設定
 	routes.Init(e)

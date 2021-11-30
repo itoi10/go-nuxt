@@ -61,3 +61,9 @@ videos list	1
 
 YouTube Data API (v3) - Quota Calculator
 https://developers.google.com/youtube/v3/determine_quota_cost?hl=ja
+
+# jinzhu/gorm
+GOのO/Rマッパ
+
+GOのORMを分かりやすくまとめてみた
+https://qiita.com/gold-kou/items/45a95d61d253184b0f33
