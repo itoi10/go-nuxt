@@ -5,6 +5,7 @@
 package routes
 
 import (
+	"github.com/itoi10/go-nuxt/middlewares"
 	"github.com/itoi10/go-nuxt/web/api"
 	"github.com/labstack/echo"
 )
@@ -28,5 +29,10 @@ func Init(e *echo.Echo) {
 		// 動画検索
 		// curl -XGET 'http://localhost:8080/api/search?q=searchword'
 		g.GET("/search", api.SearchVideos())
+	}
+
+	fg := g.Group("/favorite", middlewares.FirebaseGuard())
+	{
+		fg.POST("/:id/toggle", api.ToggleFavoriteVideo())
 	}
 }
