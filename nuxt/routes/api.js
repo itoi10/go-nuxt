@@ -9,6 +9,10 @@ export const ROUTES = {
     RELATED: '/api/related/:id',
     // 検索
     SEARCH: '/api/search',
+  },
+  POST: {
+    // お気に入り追加・削除
+    TOGGLE_FAVORITE: '/api/favorite/:id/toggle',
   }
 };
 

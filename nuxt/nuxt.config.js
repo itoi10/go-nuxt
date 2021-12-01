@@ -25,6 +25,7 @@ export default {
   plugins: [
     "./plugins/vue-youtube",
     "./plugins/cookies-to-state",
+    './plugins/axios',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -14,6 +14,11 @@ export class RequestClient {
     console.log("query: " + query)
     return await this.axios.$get(query)
   }
+
+    // POST送信
+    async post(uri) {
+      return await this.axios.$post(uri)
+    }
 }
 
 // RequestClientインスタンス生成に使う関数
