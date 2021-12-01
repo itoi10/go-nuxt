@@ -40,6 +40,9 @@ export const actions = {
     const params = {
       ...res.video_list,
     }
+    // お気に入り
+    params.isFavorite = res.is_favorite || false
+
     commit('mutateVideo', params)
   },
 
@@ -110,7 +113,14 @@ export const actions = {
     this.$cookies.remove('jwt_token')
     // トップページに遷移
     this.app.router.push('/')
-  }
+  },
+
+  // お気に入り追加・削除
+  async toggleFavorite({commit}, payload) {
+    const client = createRequestClient(this.$axios)
+    const res = await client.post(payload.url)
+    commit('mutateToggleFavorite', res.is_favorite)
+  },
 }
 
 // stateの値を変更する
@@ -125,6 +135,7 @@ export const mutations = {
   mutateVideo(state, payload) {
     // payload.itemsがあるなら0番目を設定
     const params = (payload.items && payload.items.length > 0) ? payload.items[0] : {}
+    params.isFavorite = payload.isFavorite || false
     state.item = params
   },
 
@@ -142,6 +153,10 @@ export const mutations = {
   mutateToken(state, payload) {
     state.token = payload
     console.log('state.token: ' + state.token)
+  },
+
+  mutateToggleFavorite(state, payload) {
+    state.item.isFavorite = payload
   }
 }
 
