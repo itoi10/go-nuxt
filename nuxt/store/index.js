@@ -118,7 +118,7 @@ export const actions = {
   // お気に入り追加・削除
   async toggleFavorite({commit}, payload) {
     const client = createRequestClient(this.$axios)
-    const res = await client.post(payload.url)
+    const res = await client.post(payload.uri)
     commit('mutateToggleFavorite', res.is_favorite)
   },
 }
