@@ -67,3 +67,15 @@ GOのO/Rマッパ
 
 GOのORMを分かりやすくまとめてみた
 https://qiita.com/gold-kou/items/45a95d61d253184b0f33
+
+
+
+# お気に入り追加・削除
+curl -XPOST http://localhost:8080/api/favorite/_wNsZEqpKUA/toogle -> 'Not Authenticated'
+curl -XPOST -H 'Authorization: Bearer <token>' http://localhost:8080/api/favorite/_wNsZEqpKUA/toogle -> 認証OK
+
+DB確認
+$ docker-compose exec db exec
+# mysql -u <user> -p
+> use youtube;
+> select * from favorites;

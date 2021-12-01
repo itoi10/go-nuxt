@@ -20,7 +20,7 @@ func Init(e *echo.Echo) {
 
 		// 動画情報取得                                 動画ID
 		// curl -XGET http://localhost:8080/api/video/jNQXAC9IVRw
-		g.GET("/video/:id", api.GetVideo())
+		g.GET("/video/:id", api.GetVideo(), middlewares.FirebaseAuth())
 
 		// 関連動画取得
 		// curl -XGET http://localhost:8080/api/related/jNQXAC9IVRw
@@ -31,6 +31,9 @@ func Init(e *echo.Echo) {
 		g.GET("/search", api.SearchVideos())
 	}
 
+	// お気に入り追加・削除
+	// curl -XPOST http://localhost:8080/api/favorite/_wNsZEqpKUA/toogle -> 'Not Authenticated'
+	// curl -XPOST -H 'Authorization: Bearer <token>' http://localhost:8080/api/favorite/_wNsZEqpKUA/toogle -> 認証OK
 	fg := g.Group("/favorite", middlewares.FirebaseGuard())
 	{
 		fg.POST("/:id/toggle", api.ToggleFavoriteVideo())
