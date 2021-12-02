@@ -9,6 +9,8 @@ export const ROUTES = {
     RELATED: '/api/related/:id',
     // 検索
     SEARCH: '/api/search',
+    // お気に入り動画一覧取得
+    FAVORITE: '/api/favorite',
   },
   POST: {
     // お気に入り追加・削除

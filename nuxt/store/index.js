@@ -197,7 +197,7 @@ export const getters = {
   isLoggedIn(state) {
     return !!state.token
   },
-  getFavoriteItems(state) {
+  getFavoriteVideos(state) {
     return state.favoriteItems
   }
 }

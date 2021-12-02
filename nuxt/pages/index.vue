@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import ROUTES from '..//routes/api'
+import ROUTES from '../routes/api'
 import AppVideo from '../components/AppVideo.vue'
 
 export default {
