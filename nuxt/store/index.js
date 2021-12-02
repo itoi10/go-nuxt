@@ -14,6 +14,8 @@ export const state = () => ({
   // 検索動画リスト
   searchItems: [],
   searchMeta: {},
+  // お気に入り動画リスト
+  favoriteItems: [],
   // アカウント登録用
   token: '',
 })
@@ -121,6 +123,13 @@ export const actions = {
     const res = await client.post(payload.uri)
     commit('mutateToggleFavorite', res.is_favorite)
   },
+
+  // お気に入り動画リスト取得
+  async fetchFavoriteVideos({commit}, payload) {
+    const client = createRequestClient(this.$axios)
+    const res = await client.get(payload.uri)
+    commit('mutateFavoriteVideos', res)
+  }
 }
 
 // stateの値を変更する
@@ -157,7 +166,11 @@ export const mutations = {
 
   mutateToggleFavorite(state, payload) {
     state.item.isFavorite = payload
-  }
+  },
+
+  mutateFavoriteVideos(state, payload) {
+    state.favoriteItems = payload.item || []
+  },
 }
 
 // Vueコンポーネントからステートを参照するためのgetter
@@ -183,5 +196,8 @@ export const getters = {
   // ログイン状態か？
   isLoggedIn(state) {
     return !!state.token
+  },
+  getFavoriteItems(state) {
+    return state.favoriteItems
   }
 }
