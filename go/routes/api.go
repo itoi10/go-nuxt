@@ -31,11 +31,15 @@ func Init(e *echo.Echo) {
 		g.GET("/search", api.SearchVideos())
 	}
 
-	// お気に入り追加・削除
-	// curl -XPOST http://localhost:8080/api/favorite/_wNsZEqpKUA/toogle -> 'Not Authenticated'
-	// curl -XPOST -H 'Authorization: Bearer <token>' http://localhost:8080/api/favorite/_wNsZEqpKUA/toogle -> 認証OK
+	// FirebaseGuardで保護しログイン済みのときのみアクセス可能にする
 	fg := g.Group("/favorite", middlewares.FirebaseGuard())
 	{
+		// お気に入り追加・削除
+		// curl -XPOST http://localhost:8080/api/favorite/_wNsZEqpKUA/toogle -> 'Not Authenticated'
+		// curl -XPOST -H 'Authorization: Bearer <token>' http://localhost:8080/api/favorite/_wNsZEqpKUA/toogle -> 認証OK
 		fg.POST("/:id/toggle", api.ToggleFavoriteVideo())
+		// お気に入り動画一覧取得
+		// curl -XGET -H 'Authorization: Bearer <token>' http://localhost:8080/api/favorite
+		fg.GET("", api.FetchFavoriteVideos())
 	}
 }
