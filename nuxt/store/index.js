@@ -26,7 +26,7 @@ export const actions = {
     console.log("dispatch [fetchPopularVideos]")
 
     // APIをリクエストするためのリクエストクライアント生成
-    const client = createRequestClient(this.$axios)
+    const client = createRequestClient(this.$axios, this.$cookies, this)
     // GETリクエスト送信
     const res = await client.get(payload.uri, payload.params)
     // APIのレスポンスをcommitに渡す
@@ -37,7 +37,7 @@ export const actions = {
   async findVideo({commit}, payload) {
     console.log("dispatch [findVideo]")
 
-    const client = createRequestClient(this.$axios)
+    const client = createRequestClient(this.$axios, this.$cookies, this)
     const res = await client.get(payload.uri)
     const params = {
       ...res.video_list,
@@ -52,7 +52,7 @@ export const actions = {
   async fetchRelatedVideos({commit}, payload) {
     console.log("dispatch [fetchRelatedVideos]")
 
-    const client = createRequestClient(this.$axios)
+    const client = createRequestClient(this.$axios, this.$cookies, this)
     const res = await client.get(payload.uri)
     commit('mutateRelatedVideos', res)
   },
@@ -61,7 +61,7 @@ export const actions = {
   async searchVideos({commit}, payload) {
     console.log("dispatch [searchVideos]")
 
-    const client = createRequestClient(this.$axios)
+    const client = createRequestClient(this.$axios, this.$cookies, this)
     const res = await client.get(payload.uri, payload.params)
     commit('mutateSearchVideos', res)
   },
@@ -79,14 +79,21 @@ export const actions = {
     )
     // サーバサイドでユーザ認証にJWTを使用するためトークン取得
     const token = await res.user.getIdToken()
-    // トークンをCookieとstateに保存
+    // トークンをCookieに保存
     this.$cookies.set('jwt_token', token)
+
+    // cookieにリフレッシュトークン保存
+    const refresh_token = res.user.refreshToken
+    this.$cookies.set('refresh_token', refresh_token)
+
+    // トークンをstoreに保存
     commit('mutateToken', token)
     // トップページに遷移
     this.app.router.push('/')
   },
 
   async setToken({commit}, payload) {
+    this.$cookies.set('jwt_token', payload)
     commit('mutateToken', payload)
   },
 
@@ -101,6 +108,10 @@ export const actions = {
     const token = await res.user.getIdToken()
     console.log('login action: ' + token)
     this.$cookies.set('jwt_token', token)
+
+    const refresh_token = res.user.refreshToken
+    this.$cookies.set('refresh_token', refresh_token)
+
     commit('mutateToken', token)
     // トップページに遷移
     this.app.router.push('/')
@@ -119,7 +130,7 @@ export const actions = {
 
   // お気に入り追加・削除
   async toggleFavorite({commit}, payload) {
-    const client = createRequestClient(this.$axios)
+    const client = createRequestClient(this.$axios, this.$cookies, this)
     const res = await client.post(payload.uri)
     commit('mutateToggleFavorite', res.is_favorite)
   },
@@ -127,7 +138,7 @@ export const actions = {
   // お気に入り動画リスト取得
   async fetchFavoriteVideos({commit}, payload) {
     console.log("action: fetchFavoriteVideos")
-    const client = createRequestClient(this.$axios)
+    const client = createRequestClient(this.$axios, this.$cookies, this)
     const res = await client.get(payload.uri)
     commit('mutateFavoriteVideos', res)
   }
