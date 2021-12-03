@@ -1,17 +1,47 @@
 # Go 言語テスト
 
-## 起動
+## Go (Docker) 起動方法
 
-.env ファイルに YouTubeAPI 設定
+docker-compose.yml のあるディレクトリで実行
 
 ```
-API_KEY=<YouTube API key>
+起動
+$ docker-compose up -d --build
+
+終了
+$ docker-compose down
 ```
 
-サーバ起動
+Go コンテナ入り方
 
-```golang
-go run server.go
+```
+$ docker-compose exec go sh
+```
+
+DB コンテナ入り方
+
+```
+$ docker-compose exec db bash
+
+テーブル確認
+
+# mysql -u root -p
+pass
+
+mysql> use youtube
+mysql> desc users;
+
+```
+
+env_temp ファイルを.env ファイルに名前を変更して環境変数設定
+
+```
+# YouTube APIキー
+API_KEY=hoge
+
+# FIREBASE
+KEY_JSON_PATH=hoge
+PROJECT_ID=hoge
 ```
 
 エンドポイントにアクセスすると YouTube API から取得した結果が返される

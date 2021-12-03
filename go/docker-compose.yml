@@ -19,5 +19,15 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
 
+  go:
+    build: .
+    tty: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/go/src/app
+    depends_on:
+      - db
+
 volumes:
   dbdata:

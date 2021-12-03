@@ -1,0 +1,13 @@
+# YouTube APIキー
+API_KEY=hoge
+
+# FIREBASE
+KEY_JSON_PATH=hoge
+PROJECT_ID=hoge
+
+# MySQL
+DB_USERNAME=root
+DB_PASSWORD=pass
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=youtube

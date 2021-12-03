@@ -41,5 +41,5 @@ func main() {
 	routes.Init(e)
 
 	// 8080ポートでサーバ起動
-	e.Logger.Fatal(e.Start("localhost:8080"))
+	e.Logger.Fatal(e.Start("0.0.0.0:8080"))
 }
