@@ -126,6 +126,7 @@ export const actions = {
 
   // お気に入り動画リスト取得
   async fetchFavoriteVideos({commit}, payload) {
+    console.log("action: fetchFavoriteVideos")
     const client = createRequestClient(this.$axios)
     const res = await client.get(payload.uri)
     commit('mutateFavoriteVideos', res)
@@ -169,7 +170,7 @@ export const mutations = {
   },
 
   mutateFavoriteVideos(state, payload) {
-    state.favoriteItems = payload.item || []
+    state.favoriteItems = payload.items || []
   },
 }
 

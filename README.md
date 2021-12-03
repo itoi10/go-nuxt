@@ -16,6 +16,12 @@ Go コンテナ入り方
 
 ```
 $ docker-compose exec go sh
+
+テーブル作成
+# go run tools/migration.go
+
+サーバ起動
+# go run server.go
 ```
 
 DB コンテナ入り方
@@ -63,6 +69,16 @@ curl -XGET http://localhost:8080/api/video/jNQXAC9IVRw
 
 ```
 curl -XGET http://localhost:8080/api/related/jNQXAC9IVRw
+```
+
+## Nuxt 起動方法
+
+package.json のあるディレクトリで実行
+
+```
+$ yarn install
+
+$ yarn dev
 ```
 
 ## 参考
